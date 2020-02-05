@@ -6,10 +6,13 @@ import Textfield from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography';
 import * as Icon from 'react-feather';
 import { makeStyles } from '@material-ui/core';
+import {Link} from 'react-router-dom'
 
 const useStyle= makeStyles(theme=>({
  body:{
-    backgroundColor:'#f2f2f2'  
+    backgroundColor:'#f1f1f1', 
+   
+
  },
 
 root:{
@@ -22,6 +25,7 @@ container:{
     backgroundColor:'#f1f1f1'
 },
 avatar:{
+    marginTop:theme.spacing(3),
     alignSelf:'center',
    width: theme.spacing(7),
    height: theme.spacing(7),
@@ -77,6 +81,7 @@ const LogIn = () => {
                     color:'#ffffff',
                      fontSize:20}}
                     fullWidth
+                    component ={Link } to ='/home'
                     >
                         Log in 
                     </Button>
