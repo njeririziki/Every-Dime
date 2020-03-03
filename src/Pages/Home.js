@@ -13,6 +13,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
+import Box from '@material-ui/core/Box';
+import {Link} from 'react-router-dom'
 
 
 const drawerWidth = 240;
@@ -26,11 +28,26 @@ const useStyles = makeStyles(theme => ({
       flexShrink: 0,
     },
   },
+  appToolbar:{
+    display:'flex',
+    justifyContent:'space-between',
+    backgroundColor: '#263238',
+    height:100, 
+  },
+  title: {
+    justifyContent:'space-between',
+    fontSize:40,
+    fontFamily:'Sriracha'
+  },
+  avatar:{
+    marginRight:theme.spacing(2),
+    width:100,
+    height:100,
+  },
   appBar: {
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-      backgroundColor:'#000000'
+      marginLeft: drawerWidth, 
     },
   },
   menuButton: {
@@ -39,10 +56,27 @@ const useStyles = makeStyles(theme => ({
       display: 'none',
     },
   },
+  logOut:{
+    color:'#000000',
+    backgroundColor:'#ffffff',
+ },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor:'#000011'
+    backgroundColor:'#263238',
+    
+    '&hover, &focus' : {
+      backgroundColor: theme.palette.grey[300],
+    },
+    '&:active': {
+      boxShadow: theme.shadows[1],
+      backgroundColor:(theme.palette.grey[300], 0.12),
+    },
+  },
+  listItems:{
+    color:'#ffffff',
+    fontSize:25,
+    fontFamily:'Sriracha'
   },
   content: {
     flexGrow: 1,
@@ -62,19 +96,51 @@ const Home  = (props) => {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
-      <Avatar/>
-      <Divider />
+      <Box  className={classes.avatar}>
+      <Avatar 
+      variant='circle'
+     
+      />
+      </Box>
+      
+      <Divider style={{backgroundColor:'#ffffff'}}/>
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
+      
+          <ListItem 
+          button 
+          component={Link} to ='/goals'>
             
-            <ListItemText primary={text} 
-            style={{color:'#ffffff'}}/>
+            <ListItemText 
+            primary= 'Goals'
+            className={classes.listItems} 
+            /> 
           </ListItem>
-        ))}
+          <Divider style={{backgroundColor:'#ffffff'}}/>
+          <ListItem button 
+          component={Link} to ='/budget'>>
+          <ListItemText 
+            primary= 'Budget'
+            className={classes.listItems} 
+            /> 
+          </ListItem>
+          <Divider style={{backgroundColor:'#ffffff'}}/>
+          <ListItem button 
+          component={Link} to ='/expenses'>>
+          <ListItemText 
+            primary= 'Expense Tracker'
+            className={classes.listItems} 
+            /> 
+          </ListItem>
+          <Divider style={{backgroundColor:'#ffffff'}}/> 
+          <ListItem button 
+          component={Link} to ='/goals'>>
+          <ListItemText 
+            primary= 'Savings'
+            className={classes.listItems} 
+            /> 
+          </ListItem>
+          <Divider style={{backgroundColor:'#ffffff'}}/>
       </List>
-      <Divider />
-    
     </div>
   );
 
@@ -82,7 +148,9 @@ const Home  = (props) => {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar style={{backgroundColor:'#000000'}}>
+        <Toolbar 
+        className={classes.appToolbar}
+        style={{}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -92,9 +160,20 @@ const Home  = (props) => {
           >
             <Icon.Menu />
           </IconButton>
-          <Typography variant="h6" noWrap>
-           {props.Appbarname}
+          <Typography 
+          variant="h4"
+          className={classes.title}
+          noWrap>
+           Every Dime <br/>{props.Appbarname }
           </Typography>
+          <IconButton
+            color="inherit"
+            aria-label="Log out"
+            edge="start"
+            className={classes.logOut}
+          >
+            <Icon.LogOut />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
@@ -129,8 +208,13 @@ const Home  = (props) => {
           </Drawer>
         </Hidden>
       </nav>
-      <main>
-
+      <main className={classes.content}>
+        <div className={classes.toolbar}>
+    
+          {props.GoalModal}
+        {props.Content}
+       
+        </div> 
       </main>
        </div>
       );

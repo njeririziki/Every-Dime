@@ -74,6 +74,13 @@ const LogIn = () => {
                     fullWidth
                     className={classes.other}
                     />
+                     <Textfield
+                    variant='outlined'
+                    id='password2'
+                    placeholder='Confirm Password'
+                    fullWidth
+                    className={classes.other}
+                    />
                     <Button
                      className={classes.submit}
                     variant='contained'
@@ -83,14 +90,13 @@ const LogIn = () => {
                     fullWidth
                     component ={Link } to ='/home'
                     >
-                        Log in 
+                        Sign up
                     </Button>
                 </form>
                 <Typography
                  className={classes.other}
-                 component ={Link } to ='/signup'
                 >
-                    Create account
+                  Proceed
                 </Typography>
                 </div>
             </Container>
