@@ -211,9 +211,9 @@ const Home  = (props) => {
       <main className={classes.content}>
         <div className={classes.toolbar}>
     
-          {props.GoalModal}
+        {props.GoalModal}
         {props.Content}
-       
+        {props.circularProgress}
         </div> 
       </main>
        </div>

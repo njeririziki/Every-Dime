@@ -6,11 +6,15 @@ import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
 import Textfield from '@material-ui/core/TextField';
 import * as Icon from 'react-feather';
+//import {CircularProgressbar, buildStyles} from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import {makeStyles} from '@material-ui/core/styles';
+import Circular from '../Freagments/Progress'
 
 const useStyles = makeStyles(theme=>({
    content:{
       marginTop:theme.spacing(15),
+      paddingBlock:'40px 40px 40px 40px'
    },
    root:{
       display:'flex',
@@ -49,6 +53,10 @@ const useStyles = makeStyles(theme=>({
       
       fontFamily:'Merienda',
       fontSize: '40px'
+   },
+   circular:{
+      width:200,
+      height:200,
    }
    
 }))
@@ -62,6 +70,7 @@ const Goals = (props) => {
         amount:'',
         time:''
    })
+   const percentage = 75
    const openModal=()=>{
       setOpen(true)
    }
@@ -147,6 +156,12 @@ const Goals = (props) => {
          <Icon.Plus
          className={classes.icon}/>
          </Fab>
+       {values.amount && values.time ? <div className={classes.circular}>
+                        <Circular/>
+                           </div> : null
+           
+      }  
+     
       </div>
    )
     return ( 
@@ -155,6 +170,7 @@ const Goals = (props) => {
            Appbarname='Goals'
            Content = {content}
            GoalModal={GoalModal}
+           //circularProgress={CircularProgressbar}
            />
            
         </div>
