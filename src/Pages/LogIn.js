@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect,useContext,useCallback} from 'react'
 import Container from '@material-ui/core/Container';
 import Avatar from '@material-ui/core/Avatar';
 import Button  from '@material-ui/core/Button';
@@ -6,13 +6,13 @@ import Textfield from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography';
 import * as Icon from 'react-feather';
 import { makeStyles } from '@material-ui/core';
-import {Link} from 'react-router-dom'
+import {withRouter, Link}  from 'react-router-dom'
+import Firebase from '../Firebase/Config'
+import AuthContext from '../Firebase/Context'
 
 const useStyle= makeStyles(theme=>({
  body:{
     backgroundColor:'#f1f1f1', 
-   
-
  },
 
 root:{
@@ -38,14 +38,38 @@ submit:{
 marginTop:theme.spacing(5),
 alignSelf:'center',
 backgroundColor:'#000000',
-
+fontFamily:'Titillium Web',
+color:'#ffffff',
+fontSize:20
 }
 }))
  
+const LogIn = ({history}) => {
+    const classes =useStyle();
+    // const [values,setValues]=React.useState(
+    //     {
+    //         email:'',
+    //         password:''
+    //     }
+    // )
+    // const takeInput=name=>e=>{
+    //     setValues({ ...values,[name]:e.target.vaue})
+    // }
+    const handleLogIn = useCallback( async event => {
+            event.preventDefault();
+            const { email, password } = event.target.elements;
+            try{
+                await Firebase
+                .auth().signInWithEmailAndPassword(email.value,password.value)
+                history.push('/home')
+            } catch (error) {
+                alert(error) 
+            }
+           
+        },[history])
 
 
-const LogIn = () => {
-    const classes =useStyle()
+
     return (
        <> 
             <Container  maxWidth='xs'
@@ -55,35 +79,39 @@ const LogIn = () => {
                
                 <Avatar
                 className={classes.avatar}>
-                <Icon. LogIn/>
+                <Icon.LogIn/>
                 </Avatar>
                 
                 <form
                  className={classes.other}>
                     <Textfield
                     variant='outlined'
-                    id='email'
+                    name='email'
                     placeholder='Email'
+                    type ='email'
                     fullWidth
                     className={classes.other}
+                    required
+                    //onChange={takeInput}
                     />
                     <Textfield
                     variant='outlined'
-                    id='password'
+                    name='password'
                     placeholder='Password'
+                    type= 'password'
                     fullWidth
+                    required
                     className={classes.other}
+                    //onChange={takeInput}
                     />
                     <Button
-                     className={classes.submit}
+                    className={classes.submit}
                     variant='contained'
-                    style ={{fontFamily:'Titillium Web',
-                    color:'#ffffff',
-                     fontSize:20}}
                     fullWidth
-                    component ={Link } to ='/home'
+                    
+                    onClick={handleLogIn}
                     >
-                        Log in 
+                    Log in 
                     </Button>
                 </form>
                 <Typography
@@ -97,5 +125,6 @@ const LogIn = () => {
       </> 
       );
 }
+
  
-export default LogIn;
+export default withRouter(LogIn) ;

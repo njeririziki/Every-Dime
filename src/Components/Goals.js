@@ -9,12 +9,12 @@ import * as Icon from 'react-feather';
 //import {CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import {makeStyles} from '@material-ui/core/styles';
-import Circular from '../Freagments/Progress'
+import Circular from '../Fragments/Progress'
 
 const useStyles = makeStyles(theme=>({
    content:{
       marginTop:theme.spacing(15),
-      paddingBlock:'40px 40px 40px 40px'
+     
    },
    root:{
       display:'flex',
@@ -70,7 +70,7 @@ const Goals = (props) => {
         amount:'',
         time:''
    })
-   const percentage = 75
+ 
    const openModal=()=>{
       setOpen(true)
    }
