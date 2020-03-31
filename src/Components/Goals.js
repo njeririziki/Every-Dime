@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Home from '../Pages/Home'
 import Button from '@material-ui/core/Button'
 import Fab from '@material-ui/core/Fab';
@@ -6,10 +6,10 @@ import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
 import Textfield from '@material-ui/core/TextField';
 import * as Icon from 'react-feather';
-//import {CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import {makeStyles} from '@material-ui/core/styles';
-import Circular from '../Fragments/Progress'
+import Circular from '../Fragments/Progress';
+import Firebase from '../Firebase/Config'
 
 const useStyles = makeStyles(theme=>({
    content:{
@@ -70,7 +70,29 @@ const Goals = (props) => {
         amount:'',
         time:''
    })
- 
+   
+
+   
+     
+  
+  const submitValues = async (event)=>{
+     event.preventDefault();
+     try{
+      await Firebase.firestore().collection('Goal').doc ().set({
+         goalAmount : values.amount,
+         goalTime : values.time,
+         goalTitle : values.title
+      })
+      setOpen(false) 
+      setValues({})
+     } catch (error){
+      alert(error)
+     }
+  
+  
+    }
+     
+
    const openModal=()=>{
       setOpen(true)
    }
@@ -87,6 +109,7 @@ const Goals = (props) => {
          >
           <div className={classes.modal}>
           <form  autoComplete='off'
+                 onSubmit = {submitValues}
                  >
                 
                     <Textfield
@@ -119,6 +142,7 @@ const Goals = (props) => {
                     <Button
                      className={classes.icon}
                     variant='contained'
+                    type= 'submit'
                     >
                         submit
                     </Button>

@@ -15,6 +15,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import {Link} from 'react-router-dom'
+import Firebase from '../Firebase/Config'
 
 
 const drawerWidth = 240;
@@ -92,6 +93,9 @@ const Home  = (props) => {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+   const logOut = ()=>{
+     Firebase.auth().signOut();
+   }
 
   const drawer = (
     <div>
@@ -99,7 +103,7 @@ const Home  = (props) => {
       <Box  className={classes.avatar}>
       <Avatar 
       variant='circle'
-     
+      component={Link} to ='/user'
       />
       </Box>
       
@@ -171,6 +175,7 @@ const Home  = (props) => {
             aria-label="Log out"
             edge="start"
             className={classes.logOut}
+            onClick= {logOut}
           >
             <Icon.LogOut />
           </IconButton>

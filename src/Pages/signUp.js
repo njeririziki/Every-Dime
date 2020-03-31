@@ -47,27 +47,28 @@ fontSize:20
 
 const SignUp = (props) => {
     const classes =useStyle()
-    const [values,setValues] = React.useState(
-        {
-            email:'',
-            password:'',
-            passwordII:''
-        }
-    )
-    const takeInput = name =>event =>{
-       setValues({...values,[name]: event.target.value})
-    }
-    const submitInput = ()=>{
-       Firebase.auth().createUserWithEmailAndPassword(values.email,values.password).then(()=>{
-       props.history.push('/home')
-       console.log ('successful')
-       }).catch(()=>{
+    // const [values,setValues] = React.useState(
+    //     {
+    //         email:'',
+    //         password:'',
+    //         passwordII:''
+    //     }
+    // )
+    // const takeInput = name =>event =>{
+    //    setValues({...values,[name]: event.target.value})
+    // }
+    const submitInput = async (event)=>{
+        event.preventDefault();
+        const { email ,password } = event.target.elements;
+        try{
+           await Firebase.auth().createUserWithEmailAndPassword(email.value,password.value);
+                props.history.push('/')
+                console.log ('successful')
+        } catch {
        alert ('not done')
-       })
+       }
     }
-    const isValid = 
-    values.password === values.passwordII ||
-    values.email === '' ;
+   
    
     return (
        <> 
@@ -81,29 +82,29 @@ const SignUp = (props) => {
                 </Avatar>
                 
                 <form
-               
+                 onSubmit = {submitInput}
                  className={classes.other}>
                     <Textfield
                     variant='outlined'
-                    id='email'
+                    name='email'
                     type = 'email'
                     placeholder='Email'
-                    onChange = {takeInput}
+                   // onChange = {takeInput}
                     fullWidth
                     className={classes.other}
                     />
                     <Textfield
                     variant='outlined'
-                    id='password'
+                    name='password'
                     type = 'password'
                     placeholder='Password'
-                    onChange= {takeInput}
+                   // onChange= {takeInput}
                     fullWidth
                     className={classes.other}
                     />
                      <Textfield
                     variant='outlined'
-                    id='passwordII'
+                    name='passwordII'
                     type = 'password'
                     placeholder='Confirm Password'
                     fullWidth
@@ -114,7 +115,7 @@ const SignUp = (props) => {
                     variant='contained'
                     type = 'submit'
                     fullWidth
-                   onClick = {submitInput}
+                  
                     >
                         Sign up
                     </Button>

@@ -6,7 +6,7 @@ import Textfield from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography';
 import * as Icon from 'react-feather';
 import { makeStyles } from '@material-ui/core';
-import {withRouter, Link}  from 'react-router-dom'
+import {withRouter, Link, Redirect}  from 'react-router-dom'
 import Firebase from '../Firebase/Config'
 import AuthContext from '../Firebase/Context'
 
@@ -55,20 +55,25 @@ const LogIn = ({history}) => {
     // const takeInput=name=>e=>{
     //     setValues({ ...values,[name]:e.target.vaue})
     // }
-    const handleLogIn = useCallback( async event => {
-            event.preventDefault();
-            const { email, password } = event.target.elements;
-            try{
-                await Firebase
-                .auth().signInWithEmailAndPassword(email.value,password.value)
-                history.push('/home')
-            } catch (error) {
-                alert(error) 
-            }
-           
-        },[history])
-
-
+    const handleLogin = useCallback(
+        async event => {
+          event.preventDefault();
+          const { email, password } = event.target.elements;
+          try {
+            await Firebase
+              .auth()
+              .signInWithEmailAndPassword(email.value, password.value);
+            history.push("/");
+          } catch (error) {
+            alert(error);
+          }
+        },
+        [history]
+      );
+      const {user} = useContext(AuthContext);
+      if (user){
+        return  <Redirect to = '/' />
+      }
 
     return (
        <> 
@@ -83,7 +88,8 @@ const LogIn = ({history}) => {
                 </Avatar>
                 
                 <form
-                 className={classes.other}>
+                 className={classes.other}
+                 onSubmit={handleLogin}>
                     <Textfield
                     variant='outlined'
                     name='email'
@@ -108,8 +114,7 @@ const LogIn = ({history}) => {
                     className={classes.submit}
                     variant='contained'
                     fullWidth
-                    
-                    onClick={handleLogIn}
+                     type = 'submit'
                     >
                     Log in 
                     </Button>
