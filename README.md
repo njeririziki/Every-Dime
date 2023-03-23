@@ -13,15 +13,15 @@ To get started with the Every-Dime Web App, follow these steps:
 
 - Clone the repository to your local machine.
 - Install the required dependencies using `npm install`.
-- Create a .env file in the root directory with the following environment variables:
+- Create a `.env` file in the root directory with the following environment variables:
 - ` DATABASE_URL `: the URL of the database where user data will be stored
 - ` SECRET_KEY `: a secret key used to sign user authentication tokens
 - Start the development server using `npm start`.
 
 ## Technologies Used
--  React : A JavaScript library for building user interfaces.
-- Firebase : A NoSQL document database used to store user data.
-- Material-Ui  : A front-end framework for building responsive web applications.
+-  **React** : A JavaScript library for building user interfaces.
+- **Firebase** : A NoSQL document database used to store user data.
+- **Material-Ui**  : A front-end framework for building responsive web applications.
 
 
 ## Contributing
