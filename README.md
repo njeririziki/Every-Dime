@@ -1,68 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Every-Dime Web App is a web application designed to help users track their savings progress and achieve their financial goals. With this app, users can create savings goals, track their progress towards those goals, and get insights into their saving habits.
 
-## Available Scripts
+Features
+Create Savings Goals: Users can create multiple savings goals and set the target amount they want to save for each goal.
+Track Savings Progress: The app provides a dashboard where users can see their progress towards their savings goals.
+Automatic Savings: Users can set up automatic savings plans to transfer money to their savings goals on a regular basis.
+Insights: The app provides insights into the user's saving habits, such as their average monthly savings amount and their total savings over time.
+Secure: The app uses industry-standard security measures to protect user data.
+Getting Started
+To get started with the Every-Dime Web App, follow these steps:
 
-In the project directory, you can run:
+Clone the repository to your local machine.
+Install the required dependencies using npm install.
+Create a .env file in the root directory with the following environment variables:
+DATABASE_URL: the URL of the database where user data will be stored
+SECRET_KEY: a secret key used to sign user authentication tokens
+Start the development server using npm start.
+Technologies Used
+React: A JavaScript library for building user interfaces.
+Firebase: A NoSQL document database used to store user data.
+Material-Ui: A front-end framework for building responsive web applications.
+Contributing
+If you would like to contribute to the Savings Web App, please fork the repository and submit a pull request with your changes. We welcome contributions of all kinds, including bug fixes, new features, and improvements to documentation.
 
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+License
+The Every-Dime Web App is released under the MIT License.
