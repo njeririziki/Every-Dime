@@ -25,7 +25,8 @@ To get started with the Every-Dime Web App, follow these steps:
 
 
 ## Contributing
-If you would like to contribute to the Savings Web App, please fork the repository and submit a pull request with your changes. We welcome contributions of all kinds, including bug fixes, new features, and improvements to documentation.
+If you would like to contribute to the Savings Web App, please fork the repository and submit a pull request with your changes.
+We welcome contributions of all kinds, including bug fixes, new features, and improvements to documentation.
 
 ## License
 The Every-Dime Web App is released under the [MIT License].
