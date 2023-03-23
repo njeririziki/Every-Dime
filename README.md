@@ -1,3 +1,4 @@
+## Every-Dime App
 The Every-Dime Web App is a web application designed to help users track their savings progress and achieve their financial goals. With this app, users can create savings goals, track their progress towards those goals, and get insights into their saving habits.
 
 Features
